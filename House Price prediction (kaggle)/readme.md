@@ -7,15 +7,15 @@ This Problem is one the most classical problem of Data science or Machine learni
 ## Dataset Information
 Here is Dataset link https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data
 
-Here's are the some of Data fields.
+Here's are the some of Data fields.<br><br>
 
-SalePrice - the property's sale price in dollars. This is the target variable that you're trying to predict.
-MSSubClass: The building class
-MSZoning: The general zoning classification
-LotFrontage: Linear feet of street connected to property
-LotArea: Lot size in square feet
-....
-...
+SalePrice - the property's sale price in dollars. This is the target variable that you're trying to predict.<br>
+MSSubClass: The building class<br>
+MSZoning: The general zoning classification<br>
+LotFrontage: Linear feet of street connected to property<br>
+LotArea: Lot size in square feet<br>
+....<br>
+...<br><br>
 
 ## Requirements:
 
