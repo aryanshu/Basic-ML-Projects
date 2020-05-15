@@ -1,1 +1,1 @@
-# Basic-POC-ML-Projects
+# Basic-Data-Science / Statistical-ML-Projects
