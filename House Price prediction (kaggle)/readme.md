@@ -2,7 +2,7 @@
 
 
 ## Problem Statement
-This Problem is one the most classical problem of Data science or Machine learning . With the help of 79 varibale feature about a house such as size of the house ,number of bedroom etc.  we have to predict the selling price of the House. 
+This Problem is one the classical problem of Data science or Machine learning . With the help of 79 varibale feature about a house such as size of the house ,number of bedroom etc.  we have to predict the selling price of the House. 
 
 ## Dataset Information
 Here is Dataset link https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data
@@ -17,15 +17,5 @@ LotArea: Lot size in square feet<br>
 ....<br>
 ...<br><br>
 
-## Requirements:
-
-There are some general library requirements for the project and some which are specific to individual methods. The general requirements are as follows.  
-* `numpy`
-* `scikit-learn`
-* `Seaborn`
-* `pandas`
-* `xgboost` for XGBoost.
-
-<b> It is better if you use Anaconda package of Python. </b>
 
 
