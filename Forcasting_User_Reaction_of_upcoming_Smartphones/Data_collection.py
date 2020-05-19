@@ -58,19 +58,20 @@ def get_soup(my_url , i=0):
 	containers = page_soup.findAll("li",{"class":"f-mobiles"})
 	get_details(containers, i)
 
-# creating dataframe 
-df = pd.DataFrame(columns=['pid','score-val','name','features','price','rating'])
+if __name__ == '__main__':
+	# creating dataframe 
+	df = pd.DataFrame(columns=['pid','score-val','name','features','price','rating'])
 
 
-"""
-parsing diff value of page to extract the data
+	"""
+	parsing diff value of page to extract the data
 
-"""
-for page in range(1,100):
+	"""
+	for page in range(1,100):
 
-	r= 'https://www.smartprix.com/mobiles/?page='+str(page)
-	i=(page-1)*25
-	get_soup(r , i)
+		r= 'https://www.smartprix.com/mobiles/?page='+str(page)
+		i=(page-1)*25
+		get_soup(r , i)
 
-#saving	created dataframe
-df.to_csv('dataset.csv')
+	#saving	created dataframe
+	df.to_csv('dataset.csv')
