@@ -35,7 +35,7 @@ def data_cleaning(dataset="dataset.csv",cleaned_dataset="cleaned_dataset.csv"):
 	data['feature_7']=data['features'].apply(lambda x: x.split("'")[13].replace('u2009',' ') if (len(x.split("'"))>13)  else False )
 	data['feature_8']=data['features'].apply(lambda x: x.split("'")[15].replace('u2009',' ') if (len(x.split("'"))>15)  else False )
 
-	# Extracting diffent features which orginally embedded within a single list.
+	# Extracting diffent features which orginally embedded within a single lists.
 	data['Processor(GHz)']=data['feature_2'].apply(lambda x:x.split(',')[2].split('\\')[0].replace(' ','') if len(x.split(','))==3 else np.nan)
 	data['Processor']=data['feature_2'].apply(lambda x:x.split(',')[0] if len(x.split(','))==3 else np.nan)
 	data['Core']=data['feature_2'].apply(lambda x:x.split(',')[1] if len(x.split(','))==3 else np.nan)
@@ -49,11 +49,56 @@ def data_cleaning(dataset="dataset.csv",cleaned_dataset="cleaned_dataset.csv"):
 	data['Memory_card_supported']=data['feature_7'].apply(lambda x:x.split('\\')[0].split(' ')[-1] if x!=False else np.nan)
 	data['Android-v']=data['feature_8']
 
-	# droping embedded lists after getting all the features out of it.
+	# droping  lists which contain multiple features after getting all the features out of it.
 	data.drop(['features','feature_2','feature_3','feature_4'	,'feature_5','feature_6','feature_7','feature_8'],axis=1,inplace=True)
 	data['rating']=data['rating'].apply( lambda x:x if len(x)<6 else np.nan)
+
+	
+	# converting some features to correct datatype and handling some unwanted values 
+
+
+	# handling price values in lakhs 
+	data['price']=data['price'].apply(lambda x:float(x.split(' ')[0])*100000 if x.isnumeric()==False else x)
+	data['price']=pd.to_numeric(data['price']) 
+
+
+	# checking whether the values are numeric as battery capacity always be as '5100' (Mh already stripped), if not then putting 'null' there
+	data['Battery']=data['Battery'].apply(lambda x:np.nan if x.isnumeric()==False else x)
+	data['Battery']=pd.to_numeric(data['Battery'])
+
+	# checking whether the values are numeric as memory card always be as '4' ('GB' already stripped), if not then putting 'null' there
+	data['Memory_card_supported']=data['Memory_card_supported'].apply(lambda x:np.nan if str(x).isnumeric()==False else x)
+	data['Memory_card_supported']=pd.to_numeric(data['Memory_card_supported'])
+
+
+	# checking whether the values are numeric as RAM storage always be as '4' ('GB' already stripped), if not then putting 'null' there
+	data['RAM(GB)']=data['RAM(GB)'].apply(lambda x:np.nan if x.isnumeric()==False else x)
+	data['RAM(GB)']=pd.to_numeric(data['RAM(GB)'])
+
+
+	# checking whether the values are float as screensize always be as '5.5' ('inches' already stripped), if not then putting 'null' there
+	data['Screen_size(inches)']=data['Screen_size(inches)'].apply(lambda x:x.replace("\\",'') if isFloat(x)==False else x)
+	data['Screen_size(inches)']=data['Screen_size(inches)'].apply(lambda x:np.nan if isFloat(x)==False else x)
+	data['Screen_size(inches)']=pd.to_numeric(data['Screen_size(inches)'])
+
+
+	# removing some wrong feed by comparing with max limit of particular feature
+	data['RAM(GB)']=data['RAM(GB)'].apply(lambda x:x if x<=64 else np.nan)
+	data['Screen_size(inches)']=data['Screen_size(inches)'].apply(lambda x:x if x<12 else np.nan)
+	data['Processor(GHz)']=data['Processor(GHz)'].apply(lambda x:x if x<5 else np.nan)
+
 	data.to_csv(cleaned_dataset)
 
+
+"""
+checking for float  
+"""
+def isFloat(string):
+    try:
+        float(string)
+        return True
+    except ValueError:
+        return False
 
 
 if __name__ == '__main__':
