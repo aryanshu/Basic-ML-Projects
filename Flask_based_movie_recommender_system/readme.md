@@ -24,7 +24,7 @@ There are 4 approaches in collaborative fltering but i go for the following one:
 Instead of using ratings given by the users to calculate neighborhood, the ratings are used to find similarity between items(movies). The same pearson coefficient can be used here to calculate similarity.
 
 <p align='center'>
-	<img src="dataset/readme images/Method.jpg" width=800 >
+	<img src="dataset/readme images/method.jpg" width=800 >
 </p> 
 
 ## Using web app
