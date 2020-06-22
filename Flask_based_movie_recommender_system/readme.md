@@ -1,4 +1,4 @@
-# Movie recoomendation System using colloborative filtering 
+# Movie recommendation System using colloborative filtering 
 ## Skills required/improved during project:
 * `1.Python 3`     
 * `2.Flask`
