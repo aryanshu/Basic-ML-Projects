@@ -1,3 +1,6 @@
+## if you having poroblem in opening jupyter-Notebook please go to following link:
+<a href='https://nbviewer.jupyter.org/github/aryanshu/Basic-ML-Projects/blob/master/House%20Price%20prediction%20%28kaggle%29/Visualization.ipynb'>Here</a>
+
 # House Prices: Advanced Regression Techniques.
 
 
