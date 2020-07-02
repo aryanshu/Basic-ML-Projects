@@ -1,7 +1,7 @@
 from feature_engineering import feature_engineering
 from feature_selection import feature_selection
 from Models import linear_model,xgb_model
-import parser
+import argparser
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
